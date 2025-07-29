@@ -2,3 +2,4 @@
 .vscode
 
 target
+src/test/resources/test-config.properties

@@ -18,7 +18,7 @@ public class SearchByMultiModalRequest extends BaseSearchRequest {
     private String text;
 
     @JsonProperty("image")
-    private String image;
+    private Object image;
 
     @JsonProperty("need_instruction")
     private Boolean needInstruction;

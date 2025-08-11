@@ -17,11 +17,9 @@ public class FullModalData {
     private String text;
 
     @JsonProperty("image")
-    private String image;
+    private Object image;
 
     @JsonProperty("video")
-    private String video;
+    private Object video;
 
-    @JsonProperty("fps")
-    private Float fps;
 }

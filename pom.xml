@@ -7,11 +7,39 @@
     <groupId>com.volcengine</groupId>
     <artifactId>vikingdb-java-sdk</artifactId>
     <version>0.0.1</version>
+    <name>vikingdb-java-sdk</name>
+    <url>https://open.volcengineapi.com</url>
+    <description>VikingDB Java SDK</description>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <url>scm:git:https://github.com/volcengine/vikingdb-java-sdk.git</url>
+        <connection>scm:git:https://github.com/volcengine/vikingdb-java-sdk.git</connection>
+        <developerConnection>scm:https://github.com/volcengine/vikingdb-java-sdk.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <id>volcengine</id>
+            <name>vikingdb-java-sdk</name>
+            <email>volcengine@bytedance.com</email>
+        </developer>
+    </developers>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <java.source.version>1.8</java.source.version>
+        <java.target.version>1.8</java.target.version>
+        <dep.maven-compiler-plugin.version>3.1</dep.maven-compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <dep.maven-source-plugin.version>3.1.0</dep.maven-source-plugin.version>
+        <dep.maven-surefire-plugin.version>2.9</dep.maven-surefire-plugin.version>
+        <dep.maven-jar-plugin.version>3.2.0</dep.maven-jar-plugin.version>
     </properties>
 
     <dependencies>
@@ -104,7 +132,117 @@
                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${dep.maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.source.version}</source>
+                    <target>${java.target.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${dep.maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${dep.maven-jar-plugin.version}</version>
+            </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>public</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>sonatype-nexus-staging</id>
+                    <url>https://ossrh-staging-api.central.sonatype.com/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>sonatype-nexus-staging</id>
+                    <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${dep.maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.8.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>sonatype-nexus-staging</publishingServerId>
+                            <tokenAuth>true</tokenAuth>
+                            <autoPublish>true</autoPublish>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>byted</id>
+            <distributionManagement>
+                <repository>
+                    <id>maven-release</id>
+                    <name>maven-release</name>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://${MAVEN_SERVER}/repository/releases/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>maven-release</id>
+                    <name>maven-release</name>
+                    <!--suppress UnresolvedMavenProperty -->
+                    <url>https://${MAVEN_SERVER}/repository/releases/</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
 
 </project>

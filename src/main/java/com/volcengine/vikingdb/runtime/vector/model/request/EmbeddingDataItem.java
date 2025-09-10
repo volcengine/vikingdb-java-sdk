@@ -19,7 +19,10 @@ public class EmbeddingDataItem {
     private String text;
 
     @JsonProperty("image")
-    private String image;
+    private Object image;
+
+    @JsonProperty("video")
+    private Object video;
 
     @JsonProperty("full_modal_seq")
     private List<FullModalData> fullModalSeq;

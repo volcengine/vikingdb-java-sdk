@@ -6,6 +6,7 @@ import com.volcengine.vikingdb.runtime.enums.Scheme;
 import com.volcengine.vikingdb.runtime.vector.TestVar;
 import com.volcengine.vikingdb.runtime.vector.model.request.EmbeddingDataItem;
 import com.volcengine.vikingdb.runtime.vector.model.request.EmbeddingRequest;
+import com.volcengine.vikingdb.runtime.vector.model.request.FullModalData;
 import com.volcengine.vikingdb.runtime.vector.model.response.DataApiResponse;
 import com.volcengine.vikingdb.runtime.vector.model.response.EmbeddingResult;
 import com.volcengine.vikingdb.runtime.vector.service.*;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Properties;
 
 public class EmbeddingTest {
@@ -38,7 +40,20 @@ public class EmbeddingTest {
     }
 
     @Test
-    public void testSearchByScalarV1() throws Exception {
+    public void testEmbeddingForText() throws Exception {
+        EmbeddingRequest request = EmbeddingRequest.builder()
+                .denseModel(TestVar.EMBEDDING_DENSE)
+                .data(Arrays.asList(
+                        EmbeddingDataItem.builder().text("我喜欢听歌").build(),
+                        EmbeddingDataItem.builder().text("我喜欢雨天").build()
+                ))
+                .build();
+        DataApiResponse<EmbeddingResult> response = service.embedding(request);
+        System.out.println(response);
+    }
+
+    @Test
+    public void testEmbeddingForTextWithSparse() throws Exception {
         EmbeddingRequest request = EmbeddingRequest.builder()
                 .denseModel(TestVar.EMBEDDING_DENSE)
                 .sparseModel(TestVar.EMBEDDING_SPARSE)
@@ -47,6 +62,33 @@ public class EmbeddingTest {
                         EmbeddingDataItem.builder().text("我喜欢雨天").build()
                 ))
                 .build();
+        DataApiResponse<EmbeddingResult> response = service.embedding(request);
+        System.out.println(response);
+    }
+
+    @Test
+    public void testEmbeddingForTextAndImage() throws Exception {
+        EmbeddingRequest request = EmbeddingRequest.builder()
+                .denseModel(TestVar.EMBEDDING_DENSE)
+                .data(Arrays.asList(
+                        EmbeddingDataItem.builder().text("我喜欢听歌").image("tos://your_bucket/1.jpg").build(),
+                        EmbeddingDataItem.builder().text("我喜欢雨天").build()
+                ))
+                .build();
+        DataApiResponse<EmbeddingResult> response = service.embedding(request);
+        System.out.println(response);
+    }
+
+    @Test
+    public void testEmbeddingForFullModalSeq() throws Exception {
+        EmbeddingRequest request = EmbeddingRequest.builder()
+                .denseModel(TestVar.EMBEDDING_DENSE)
+                .sparseModel(TestVar.EMBEDDING_SPARSE)
+                .data(Collections.singletonList(EmbeddingDataItem.builder().fullModalSeq(Arrays.asList(
+                            FullModalData.builder().text("我喜欢听歌").build(),
+                            FullModalData.builder().image("tos://your_bucket/.1.jpg").build(),
+                            FullModalData.builder().video("tos://your_bucket/.1.mp4").build()))
+                .build())).build();
         DataApiResponse<EmbeddingResult> response = service.embedding(request);
         System.out.println(response);
     }

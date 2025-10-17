@@ -6,6 +6,8 @@ package com.volcengine.vikingdb.runtime.vector.embedding;
 import com.volcengine.vikingdb.runtime.core.ApiClientTest;
 import com.volcengine.vikingdb.runtime.core.auth.AuthWithAkSk;
 import com.volcengine.vikingdb.runtime.enums.Scheme;
+import com.volcengine.vikingdb.runtime.exception.ApiClientException;
+import com.volcengine.vikingdb.runtime.exception.VectorApiException;
 import com.volcengine.vikingdb.runtime.vector.TestVar;
 import com.volcengine.vikingdb.runtime.vector.model.request.EmbeddingDataItem;
 import com.volcengine.vikingdb.runtime.vector.model.request.EmbeddingRequest;
@@ -94,5 +96,26 @@ public class EmbeddingTest {
                 .build())).build();
         DataApiResponse<EmbeddingResult> response = service.embedding(request);
         System.out.println(response);
+    }
+
+    @Test
+    public void testEmbeddingForFullModalSeqWrong() {
+        try {
+            EmbeddingRequest request = EmbeddingRequest.builder()
+                    .denseModel(TestVar.EMBEDDING_DENSE)
+                    .sparseModel(TestVar.EMBEDDING_SPARSE)
+                    .data(Collections.singletonList(EmbeddingDataItem.builder().fullModalSeq(Arrays.asList(
+                                    FullModalData.builder().text("我喜欢听歌").build(),
+                                    FullModalData.builder().image("tos://your_bucket/.1.jpg").build(),
+                                    FullModalData.builder().video("tos://your_bucket/.1.mp4").build()))
+                            .build())).build();
+            DataApiResponse<EmbeddingResult> response = service.embedding(request);
+            System.out.println(response);
+        } catch (VectorApiException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e);
+        } catch (ApiClientException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

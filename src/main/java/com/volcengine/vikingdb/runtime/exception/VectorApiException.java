@@ -29,8 +29,4 @@ public class VectorApiException extends Exception {
                 '}';
     }
 
-    @Override
-    public String getMessage() {
-        return toString();
-    }
 }

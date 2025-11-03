@@ -25,6 +25,9 @@ public class BaseSearchRequest extends BaseIndexRequest {
     @JsonProperty("filter")
     private Map<String, Object> filter;
 
+    @JsonProperty("partition")
+    private String partition;
+
     @JsonProperty("limit")
     private Integer limit;
 

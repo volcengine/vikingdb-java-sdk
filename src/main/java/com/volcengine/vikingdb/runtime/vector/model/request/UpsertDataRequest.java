@@ -25,6 +25,9 @@ public class UpsertDataRequest extends BaseCollectionRequest {
     @JsonProperty("ttl")
     private Long ttl;
 
+    @JsonProperty("ignore_unknown_fields")
+    private Boolean ignoreUnknownFields;
+
     @JsonProperty("async")
     private Boolean async;
 

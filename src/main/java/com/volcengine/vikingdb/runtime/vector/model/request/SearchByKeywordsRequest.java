@@ -22,6 +22,9 @@ public class SearchByKeywordsRequest extends BaseSearchRequest {
     @JsonProperty("keywords")
     private List<String> keywords;
 
+    @JsonProperty("query")
+    private String query;
+
     @JsonProperty("case_sensitive")
     private Boolean caseSensitive;
 }

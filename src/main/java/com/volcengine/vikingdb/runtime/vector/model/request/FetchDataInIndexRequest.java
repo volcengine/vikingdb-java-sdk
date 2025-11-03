@@ -21,6 +21,9 @@ public class FetchDataInIndexRequest extends BaseIndexRequest {
     @JsonProperty("ids")
     private List<Object> ids;
 
+    @JsonProperty("partition")
+    private String partition;
+
     @JsonProperty("output_fields")
     private List<String> outputFields;
 

@@ -25,9 +25,15 @@ public class AggregateRequest extends BaseIndexRequest {
     @JsonProperty("op")
     private String op;
 
+    @JsonProperty("partition")
+    private String partition;
+
     @JsonProperty("field")
     private String field;
 
     @JsonProperty("cond")
     private Map<String, Object> cond;
+
+    @JsonProperty("order")
+    private String order;
 }

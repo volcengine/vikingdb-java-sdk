@@ -24,4 +24,7 @@ public class UpdateDataRequest extends BaseCollectionRequest {
 
     @JsonProperty("ttl")
     private Long ttl;
+
+    @JsonProperty("ignore_unknown_fields")
+    private Boolean ignoreUnknownFields;
 }

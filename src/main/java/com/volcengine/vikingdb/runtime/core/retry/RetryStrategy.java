@@ -3,8 +3,6 @@
 
 package com.volcengine.vikingdb.runtime.core.retry;
 
-import com.github.rholder.retry.RetryException;
-
 import java.util.concurrent.Callable;
 
 /**

@@ -20,7 +20,7 @@ public class LinearBackoffStrategy implements RetryStrategy {
 
     private final int maxRetries;
     private final long delayMillis;
-    private final Boolean withJitter;
+    private final boolean withJitter;
 
     public LinearBackoffStrategy() {
         this(Const.DEFAULT_MAX_RETRY_TIMES, Const.DEFAULT_RETRY_INITIAL_DELAY_MS, true);
@@ -50,7 +50,7 @@ public class LinearBackoffStrategy implements RetryStrategy {
                 }
                 long jitterDelay = withJitter ? ThreadLocalRandom.current().nextLong(delayMillis) : 0;
                 try {
-                    Thread.sleep(Math.min(jitterDelay + delayMillis, delayMillis));
+                    Thread.sleep(delayMillis + jitterDelay);
                 } catch (InterruptedException interruptedException) {
                     Thread.currentThread().interrupt();
                     throw new RuntimeException("Retry interrupted", interruptedException);

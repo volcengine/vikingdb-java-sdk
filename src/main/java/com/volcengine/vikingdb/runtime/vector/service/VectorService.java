@@ -27,6 +27,8 @@ public class VectorService {
 
     protected final ApiClient apiClient;
 
+    private static boolean isServiceConnectable = false;
+
     /**
      * Constructs a new VectorService with the specified host and authentication.
      *
@@ -35,7 +37,7 @@ public class VectorService {
      */
     public VectorService(String host, Auth auth) throws ApiClientException, VectorApiException {
         apiClient = new ApiClient(host, auth);
-        ping();
+        checkServiceConnectivity();
     }
 
     /**
@@ -47,7 +49,7 @@ public class VectorService {
      */
     public VectorService(Scheme scheme, String host, Auth auth) throws ApiClientException, VectorApiException {
         apiClient = new ApiClient(scheme, host, null, auth);
-        ping();
+        checkServiceConnectivity();
     }
 
     /**
@@ -60,7 +62,7 @@ public class VectorService {
      */
     public VectorService(Scheme scheme, String host, String region, Auth auth) throws ApiClientException, VectorApiException {
         apiClient = new ApiClient(scheme, host, region, auth);
-        ping();
+        checkServiceConnectivity();
     }
 
     /**
@@ -75,13 +77,20 @@ public class VectorService {
     public VectorService(Scheme scheme, String host, String region, Auth auth, ClientConfig clientConfig)
             throws ApiClientException, VectorApiException {
         apiClient = new ApiClient(scheme, host, region, auth, clientConfig);
-        ping();
+        checkServiceConnectivity();
     }
 
     /**
      * Checks the connectivity to the VikingDB service.
      * Throws an exception if the service is unreachable or returns an error status.
      */
+    private synchronized void checkServiceConnectivity() throws ApiClientException, VectorApiException {
+        if (!isServiceConnectable) {
+            this.ping();
+            isServiceConnectable = true;
+        }
+    }
+
     public ResponseContext ping() throws ApiClientException, VectorApiException {
         return ping(null);
     }

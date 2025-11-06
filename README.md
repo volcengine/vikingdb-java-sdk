@@ -25,7 +25,7 @@ To use the SDK in your Maven project, add the following dependency to your `pom.
 <dependency>
     <groupId>com.volcengine</groupId>
     <artifactId>vikingdb-java-sdk</artifactId>
-    <version>0.0.1</version> <!-- Please check for the latest version -->
+    <version>0.0.3</version> <!-- Please check for the latest version -->
 </dependency>
 ```
 

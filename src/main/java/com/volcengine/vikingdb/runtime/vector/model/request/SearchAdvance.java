@@ -20,7 +20,7 @@ import java.util.Map;
 @EqualsAndHashCode()
 public class SearchAdvance {
     @JsonProperty("dense_weight")
-    private List<Double> denseWeight;
+    private Double denseWeight;
 
     @JsonProperty("ids_in")
     private List<Object> idsIn;

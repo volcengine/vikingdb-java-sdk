@@ -25,7 +25,7 @@ To use the SDK in your Maven project, add the following dependency to your `pom.
 <dependency>
     <groupId>com.volcengine</groupId>
     <artifactId>vikingdb-java-sdk</artifactId>
-    <version>0.0.4</version> <!-- Please check for the latest version -->
+    <version>0.1.0</version> <!-- Please check for the latest version -->
 </dependency>
 ```
 
@@ -113,6 +113,10 @@ VectorService service = new VectorService("your-vikingdb-host", auth);
 ### Embedding Operations
 
 -   `embedding()`
+
+### Rerank Operations
+
+-   `rerank()`
 
 ### Error Handling
 

@@ -379,4 +379,24 @@ public class VectorService {
         ).callApi(apiClient, addition);
     }
 
+    /**
+     * Rerank documents for the given data inputs.
+     *
+     * @param request The request object containing the data to be reranked.
+     * @return An API response containing the reranked results.
+     */
+    public DataApiResponse<RerankResult> rerank(RerankRequest request)
+            throws ApiClientException, VectorApiException {
+        return rerank(request, null);
+    }
+
+    public DataApiResponse<RerankResult> rerank(RerankRequest request, RequestAddition addition)
+            throws ApiClientException, VectorApiException {
+        return new ApiRequestBinding<>(
+                ApiInfo.Rerank,
+                request,
+                new TypeReference<DataApiResponse<RerankResult>>() {}
+        ).callApi(apiClient, addition);
+    }
+
 }

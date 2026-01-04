@@ -33,4 +33,5 @@ public class ApiInfo {
     public static final ApiInfo SORT = new ApiInfo("Sort", Method.POST, "/api/vikingdb/data/sort");
 
     public static final ApiInfo Embedding = new ApiInfo("Embedding", Method.POST, "/api/vikingdb/embedding");
+    public static final ApiInfo Rerank = new ApiInfo("Rerank", Method.POST, "/api/vikingdb/rerank");
 }

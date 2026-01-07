@@ -6,7 +6,7 @@
 
     <groupId>com.volcengine</groupId>
     <artifactId>vikingdb-java-sdk</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <name>vikingdb-java-sdk</name>
     <url>https://open.volcengineapi.com</url>
     <description>VikingDB Java SDK</description>

@@ -23,7 +23,7 @@ public class UpdateDataRequest extends BaseCollectionRequest {
     private List<Map<String, Object>> data;
 
     @JsonProperty("ttl")
-    private Long ttl;
+    private Integer ttl;
 
     @JsonProperty("ignore_unknown_fields")
     private Boolean ignoreUnknownFields;

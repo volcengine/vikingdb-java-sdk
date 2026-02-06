@@ -7,6 +7,7 @@ import com.volcengine.vikingdb.runtime.Util;
 import com.volcengine.vikingdb.runtime.core.auth.Auth;
 import com.volcengine.vikingdb.runtime.core.auth.AuthWithAkSk;
 import com.volcengine.vikingdb.runtime.core.auth.AuthWithApiKey;
+import com.volcengine.vikingdb.runtime.core.auth.AuthWithHeader;
 import com.volcengine.vikingdb.runtime.enums.AuthType;
 import com.volcengine.vikingdb.runtime.enums.Method;
 import com.volcengine.vikingdb.runtime.exception.ExecuteHttpRequestException;
@@ -35,6 +36,10 @@ public interface RequestExecutor {
             if (auth.getAuthType() == AuthType.API_KEY) {
                 AuthWithApiKey authWithApiKey = (AuthWithApiKey) auth;
                 return new RequestExecutorWithApiKey(apiClient, authWithApiKey.getApiKey());
+            }
+            if (auth.getAuthType() == AuthType.HEADER) {
+                AuthWithHeader authWithHeader = (AuthWithHeader) auth;
+                return new RequestExecutorWithHeader(apiClient, authWithHeader.getHeaders());
             }
         }
         return new RequestExecutorWithNoAuth(apiClient);

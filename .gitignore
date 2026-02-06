@@ -1,5 +1,6 @@
 .idea
 .vscode
+.env
 
 target
 src/test/resources/test-config.properties

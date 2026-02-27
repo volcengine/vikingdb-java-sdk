@@ -19,6 +19,9 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class SearchByKeywordsRequest extends BaseSearchRequest {
+    @JsonProperty("mode")
+    private String mode;
+
     @JsonProperty("keywords")
     private List<String> keywords;
 
@@ -27,4 +30,13 @@ public class SearchByKeywordsRequest extends BaseSearchRequest {
 
     @JsonProperty("case_sensitive")
     private Boolean caseSensitive;
+
+    @JsonProperty("fields")
+    private List<String> fields;
+
+    @JsonProperty("bm25_k1")
+    private Double bm25K1;
+
+    @JsonProperty("bm25_b")
+    private Double bm25B;
 }

@@ -26,4 +26,7 @@ public class FetchInIndexItem {
 
     @JsonProperty("dense_dim")
     private Integer denseDim;
+
+    @JsonProperty("sparse_vector")
+    private Map<String, Float> sparseVector;
 }

@@ -20,4 +20,10 @@ import java.util.List;
 public class FetchDataInCollectionRequest extends BaseCollectionRequest {
     @JsonProperty("ids")
     private List<Object> ids;
+
+    @JsonProperty("return_download_url")
+    private Boolean returnDownloadUrl;
+
+    @JsonProperty("return_analyzed_result")
+    private Boolean returnAnalyzedResult;
 }

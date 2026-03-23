@@ -7,20 +7,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@SuperBuilder(toBuilder = true)
-public class BaseCollectionRequest {
-    @JsonProperty("project_name")
-    private String projectName;
-
-    @JsonProperty("collection_name")
-    private String collectionName;
-
-    @JsonProperty("resource_id")
-    private String resourceId;
-
+public class SearchInstruction {
+    @JsonProperty("auto_fill")
+    private Boolean autoFill;
 }

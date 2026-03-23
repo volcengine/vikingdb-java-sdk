@@ -28,4 +28,13 @@ public class SearchByMultiModalRequest extends BaseSearchRequest {
 
     @JsonProperty("need_instruction")
     private Boolean needInstruction;
+
+    @JsonProperty("instruction")
+    private SearchInstruction instruction;
+
+    @JsonProperty("tensor_rerank")
+    private TensorRerank tensorRerank;
+
+    @JsonProperty("rerank")
+    private ModelRerank rerank;
 }

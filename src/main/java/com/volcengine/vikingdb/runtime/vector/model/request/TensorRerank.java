@@ -7,20 +7,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@SuperBuilder(toBuilder = true)
-public class BaseCollectionRequest {
-    @JsonProperty("project_name")
-    private String projectName;
+public class TensorRerank {
+    @JsonProperty("tensor")
+    private List<List<Double>> tensor;
 
-    @JsonProperty("collection_name")
-    private String collectionName;
+    @JsonProperty("input_limit")
+    private Integer inputLimit;
 
-    @JsonProperty("resource_id")
-    private String resourceId;
-
+    @JsonProperty("max_similarity_algo")
+    private String maxSimilarityAlgo;
 }

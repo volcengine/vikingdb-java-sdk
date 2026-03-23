@@ -18,12 +18,21 @@ import java.util.List;
 @Data
 @EqualsAndHashCode()
 public class EmbeddingRequest {
+    @JsonProperty("project_name")
+    private String projectName;
+
     @JsonProperty("dense_model")
     private EmbeddingModel denseModel;
 
     @JsonProperty("sparse_model")
     private EmbeddingModel sparseModel;
 
+    @JsonProperty("tensor_model")
+    private EmbeddingModel tensorModel;
+
     @JsonProperty("data")
     private List<EmbeddingDataItem> data;
+
+    @JsonProperty("max_retry_time")
+    private Integer maxRetryTime;
 }

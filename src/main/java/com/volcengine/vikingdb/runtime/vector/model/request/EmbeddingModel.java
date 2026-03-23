@@ -10,6 +10,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder(toBuilder = true)
@@ -24,6 +26,15 @@ public class EmbeddingModel {
 
     @JsonProperty("dim")
     private Integer dim;
+
+    @JsonProperty("ndim")
+    private Integer ndim;
+
+    @JsonProperty("shape")
+    private List<Integer> shape;
+
+    @JsonProperty("instruction")
+    private EmbeddingInstruction instruction;
 
     public EmbeddingModel(String name, String version) {
         this.name = name;

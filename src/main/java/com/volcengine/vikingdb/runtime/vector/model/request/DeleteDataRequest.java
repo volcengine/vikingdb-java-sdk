@@ -25,6 +25,7 @@ public class DeleteDataRequest extends BaseCollectionRequest {
     @JsonProperty("del_all")
     private Boolean delAll;
 
+    @JsonProperty("async")
+    private Boolean async;
+
 }
-
-

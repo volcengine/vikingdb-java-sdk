@@ -25,4 +25,7 @@ public class SearchByVectorRequest extends BaseSearchRequest {
 
     @JsonProperty("sparse_vector")
     private Map<String, Float> sparseVector;
+
+    @JsonProperty("tensor_rerank")
+    private TensorRerank tensorRerank;
 }

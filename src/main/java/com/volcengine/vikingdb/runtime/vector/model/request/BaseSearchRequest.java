@@ -34,6 +34,18 @@ public class BaseSearchRequest extends BaseIndexRequest {
     @JsonProperty("offset")
     private Integer offset;
 
+    @JsonProperty("return_schema")
+    private Boolean returnSchema;
+
+    @JsonProperty("return_download_url")
+    private Boolean returnDownloadUrl;
+
+    @JsonProperty("return_analyzed_result")
+    private Boolean returnAnalyzedResult;
+
+    @JsonProperty("return_detail_info")
+    private Boolean returnDetailInfo;
+
     @JsonProperty("advance")
     private SearchAdvance advance;
 }

@@ -6,40 +6,30 @@ package com.volcengine.vikingdb.runtime.vector.model.request;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
-
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder(toBuilder = true)
 @Data
-@EqualsAndHashCode()
-public class RerankRequest {
-    @JsonProperty("project_name")
-    private String projectName;
-
+public class ModelRerank {
     @JsonProperty("model_name")
     private String modelName;
 
     @JsonProperty("model_version")
     private String modelVersion;
 
-    @JsonProperty("data")
-    private List<List<FullModalData>> data;
-
-    @JsonProperty("query")
-    private List<FullModalData> query;
-
     @JsonProperty("instruction")
     private String instruction;
 
-    @JsonProperty("return_origin_data")
-    private Boolean returnOriginData;
+    @JsonProperty("input_limit")
+    private Integer inputLimit;
 
-    @JsonProperty("max_retry_time")
-    private Integer maxRetryTime;
+    @JsonProperty("score_threshold")
+    private Double scoreThreshold;
 
+    @JsonProperty("fail_strategy")
+    private String failStrategy;
+
+    @JsonProperty("timeout_ms")
+    private Integer timeoutMs;
 }

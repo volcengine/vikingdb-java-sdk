@@ -25,4 +25,10 @@ public class SearchItem {
 
     @JsonProperty("ann_score")
     private Float annScore;
+
+    @JsonProperty("origin_score")
+    private Float originScore;
+
+    @JsonProperty("addition_score")
+    private Float additionScore;
 }

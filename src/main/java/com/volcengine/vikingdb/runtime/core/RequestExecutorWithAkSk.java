@@ -34,7 +34,7 @@ public class RequestExecutorWithAkSk implements RequestExecutor {
         try {
             signableRequest = Sign.prepareRequest(
                     apiClient.getScheme(), apiClient.getHost(), path, method,
-                    params, headers, body, ak, sk, apiClient.getRegion()
+                    params, headers, body, ak, sk, apiClient.getRegion(), apiClient.getServiceName()
             );
         } catch (Exception e) {
             throw new SignRequestException(e.getMessage(), e);

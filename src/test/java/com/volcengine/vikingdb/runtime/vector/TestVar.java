@@ -10,6 +10,10 @@ public class TestVar {
     public static final String COLLECTION_NAME_VECTORIZE = "test_coll_for_java_sdk_with_vectorize";
     public static final String INDEX_NAME = "idx_1";
     public static final String INDEX_NAME_SORT = "idx_rs_1";
-    public static final EmbeddingModel EMBEDDING_DENSE = new EmbeddingModel("doubao-embedding-vision", "250615", 1024);
+    public static final EmbeddingModel EMBEDDING_DENSE = EmbeddingModel.builder()
+            .name("doubao-embedding-vision")
+            .version("250615")
+            .dim(1024)
+            .build();
     public static final EmbeddingModel EMBEDDING_SPARSE = new EmbeddingModel("bge-m3", "default");
 }

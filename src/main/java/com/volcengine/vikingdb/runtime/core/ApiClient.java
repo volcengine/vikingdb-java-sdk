@@ -26,18 +26,23 @@ public class ApiClient {
     private final Scheme scheme;
     private final String host;
     private final String region;
+    private final String serviceName;
     private final ClientConfig clientConfig;
     private final RequestExecutor requestExecutor;
 
     public ApiClient(String host, Auth auth) {
-        this(null, host, "", auth, null);
+        this(null, host, "", auth, null, null);
     }
 
     public ApiClient(Scheme scheme, String host, String region, Auth auth) {
-        this(scheme, host, region, auth, null);
+        this(scheme, host, region, auth, null, null);
     }
 
     public ApiClient(Scheme scheme, String host, String region, Auth auth, ClientConfig clientConfig) {
+        this(scheme, host, region, auth, clientConfig, null);
+    }
+
+    public ApiClient(Scheme scheme, String host, String region, Auth auth, ClientConfig clientConfig, String serviceName) {
         this.auth = auth;
         if (scheme == null) {
             scheme = Scheme.DEFAULT;
@@ -49,6 +54,10 @@ public class ApiClient {
             region = Const.DEFAULT_REGION;
         }
         this.region = region;
+        if (Util.isEmpty(serviceName)) {
+            serviceName = Const.DEFAULT_SERVICE;
+        }
+        this.serviceName = serviceName;
         if (clientConfig == null) {
             clientConfig = new ClientConfig();
         }

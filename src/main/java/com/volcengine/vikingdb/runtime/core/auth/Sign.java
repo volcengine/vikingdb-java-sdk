@@ -24,6 +24,12 @@ public class Sign {
     public static SignableRequest prepareRequest(Scheme scheme, String host, String path, Method method,
                                                  Map<String, String> params, Map<String, String> headers,
                                                  String body, String ak, String sk, String region) throws Exception {
+        return prepareRequest(scheme, host, path, method, params, headers, body, ak, sk, region, Const.DEFAULT_SERVICE);
+    }
+
+    public static SignableRequest prepareRequest(Scheme scheme, String host, String path, Method method,
+                                                 Map<String, String> params, Map<String, String> headers,
+                                                 String body, String ak, String sk, String region, String serviceName) throws Exception {
         SignableRequest request = new SignableRequest();
         request.setMethod(method.name());
         RequestExecutor.setHeaders(request, headers);
@@ -52,7 +58,7 @@ public class Sign {
 
         Credentials credentials = new Credentials(
                 region,
-                Const.DEFAULT_SERVICE);
+                serviceName);
         credentials.setAccessKeyID(ak);
         credentials.setSecretAccessKey(sk);
 

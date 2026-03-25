@@ -6,7 +6,7 @@
 
     <groupId>com.volcengine</groupId>
     <artifactId>vikingdb-java-sdk</artifactId>
-    <version>0.1.4</version>
+    <version>0.1.5</version>
     <name>vikingdb-java-sdk</name>
     <url>https://open.volcengineapi.com</url>
     <description>VikingDB Java SDK</description>
@@ -35,7 +35,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.source.version>1.8</java.source.version>
         <java.target.version>1.8</java.target.version>
-        <dep.maven-compiler-plugin.version>3.1</dep.maven-compiler-plugin.version>
+        <dep.maven-compiler-plugin.version>3.8.1</dep.maven-compiler-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <dep.maven-source-plugin.version>3.1.0</dep.maven-source-plugin.version>
         <dep.maven-surefire-plugin.version>2.9</dep.maven-surefire-plugin.version>
@@ -67,6 +67,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.18.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.38</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -109,11 +115,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
@@ -140,6 +141,13 @@
                     <source>${java.source.version}</source>
                     <target>${java.target.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.38</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
             <plugin>
@@ -219,7 +227,6 @@
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>sonatype-nexus-staging</publishingServerId>
-                            <tokenAuth>true</tokenAuth>
                             <autoPublish>true</autoPublish>
                         </configuration>
                     </plugin>

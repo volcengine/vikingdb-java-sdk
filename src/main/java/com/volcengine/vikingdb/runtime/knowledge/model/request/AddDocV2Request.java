@@ -33,5 +33,7 @@ public class AddDocV2Request {
 
     @JsonProperty("uri")
     private String uri;
-}
 
+    @JsonProperty("path_segments")
+    private List<String> pathSegments;
+}

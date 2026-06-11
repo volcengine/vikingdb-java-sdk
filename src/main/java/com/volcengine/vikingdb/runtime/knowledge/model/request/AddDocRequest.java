@@ -38,7 +38,7 @@ public class AddDocRequest {
     private String url;
 
     @JsonProperty("lark_file")
-    private String larkFile;
+    private LarkFile larkFile;
 
     @JsonProperty("meta")
     private List<MetaItem> meta;
@@ -46,4 +46,3 @@ public class AddDocRequest {
     @JsonProperty("dedup")
     private DedupOptions dedup;
 }
-

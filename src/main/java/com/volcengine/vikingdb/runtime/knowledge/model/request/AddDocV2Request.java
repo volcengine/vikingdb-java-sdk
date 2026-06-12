@@ -36,4 +36,7 @@ public class AddDocV2Request {
 
     @JsonProperty("path_segments")
     private List<String> pathSegments;
+
+    @JsonProperty("strategy_resource_id")
+    private String strategyResourceId;
 }

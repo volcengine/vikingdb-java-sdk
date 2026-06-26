@@ -18,6 +18,7 @@ import com.volcengine.vikingdb.runtime.knowledge.service.KnowledgeService;
 import com.volcengine.vikingdb.runtime.knowledge.util.ExampleUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -62,7 +63,7 @@ public class Main {
         ListDocsRequest listReq = ListDocsRequest.builder()
                 .offset(0)
                 .limit(10)
-                .filter(ListDocsFilter.builder().docIdList(List.of(docId)).build())
+                .filter(ListDocsFilter.builder().docIdList(Collections.singletonList(docId)).build())
                 .returnTokenUsage(true)
                 .build();
         ListDocsResponse listResp = kc.listDocs(listReq, new RequestAddition());
@@ -87,7 +88,7 @@ public class Main {
                     {
                         put("op", "must");
                         put("field", "category");
-                        put("conds", List.of("financial_report"));
+                        put("conds", Collections.singletonList("financial_report"));
                     }
                 })
                 .limit(10)

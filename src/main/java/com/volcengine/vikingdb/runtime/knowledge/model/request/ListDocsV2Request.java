@@ -1,5 +1,5 @@
 // Copyright (c) 2025 Beijing Volcano Engine Technology Co., Ltd.
-// SPDX-License-Identifier: Apache-2.0 
+// SPDX-License-Identifier: Apache-2.0
 
 package com.volcengine.vikingdb.runtime.knowledge.model.request;
 
@@ -13,19 +13,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @Data
-public class ListDocsRequest {
-    @JsonProperty("offset")
-    private Integer offset;
-
+public class ListDocsV2Request {
     @JsonProperty("limit")
     private Integer limit;
 
-    @JsonProperty("doc_type")
-    private String docType;
-
-    @JsonProperty("filter")
-    private ListDocsFilter filter;
-
-    @JsonProperty("return_token_usage")
-    private Boolean returnTokenUsage;
+    @JsonProperty("next_token")
+    private String nextToken;
 }

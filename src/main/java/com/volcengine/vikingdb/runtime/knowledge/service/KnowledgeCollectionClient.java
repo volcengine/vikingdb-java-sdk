@@ -49,8 +49,9 @@ public class KnowledgeCollectionClient {
         if (request == null) {
             return payload;
         }
-        Map<String, Object> requestMap = ApiClient.objectMapper.convertValue(request, new TypeReference<Map<String, Object>>() {
-        });
+        Map<String, Object> requestMap = ApiClient.objectMapper.convertValue(request,
+                new TypeReference<Map<String, Object>>() {
+                });
         payload.putAll(requestMap);
         return payload;
     }
@@ -59,50 +60,51 @@ public class KnowledgeCollectionClient {
         return addDoc(request, null);
     }
 
-    public AddDocResponse addDoc(AddDocRequest request, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public AddDocResponse addDoc(AddDocRequest request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = mergePayload(request);
         return new ApiRequestBinding<>(
                 ApiInfo.ADD_DOC,
                 payload,
                 new TypeReference<AddDocResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
     public AddDocResponse addDocV2(AddDocV2Request request) throws ApiClientException, KnowledgeApiException {
         return addDocV2(request, null);
     }
 
-    public AddDocResponse addDocV2(AddDocV2Request request, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public AddDocResponse addDocV2(AddDocV2Request request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = mergePayload(request);
         return new ApiRequestBinding<>(
                 ApiInfo.ADD_DOC_V2,
                 payload,
                 new TypeReference<AddDocResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
     public BaseResponse deleteDoc(String docId) throws ApiClientException, KnowledgeApiException {
         return deleteDoc(docId, null);
     }
 
-    public BaseResponse deleteDoc(String docId, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public BaseResponse deleteDoc(String docId, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = metaPayload();
         payload.put("doc_id", docId);
         return new ApiRequestBinding<>(
                 ApiInfo.DELETE_DOC,
                 payload,
                 new TypeReference<BaseResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
     public DocInfo getDoc(String docId) throws ApiClientException, KnowledgeApiException {
         return getDoc(docId, false, null);
     }
 
-    public DocInfo getDoc(String docId, boolean returnTokenUsage, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public DocInfo getDoc(String docId, boolean returnTokenUsage, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = metaPayload();
         payload.put("doc_id", docId);
         if (returnTokenUsage) {
@@ -112,8 +114,7 @@ public class KnowledgeCollectionClient {
                 ApiInfo.GET_DOC,
                 payload,
                 new TypeReference<DocInfoResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
         DocInfo data = response.getData();
         if (data == null) {
             return null;
@@ -131,21 +132,52 @@ public class KnowledgeCollectionClient {
         return listDocs(request, null);
     }
 
-    public ListDocsResponse listDocs(ListDocsRequest request, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public ListDocsResponse listDocs(ListDocsRequest request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = mergePayload(request);
         return new ApiRequestBinding<>(
                 ApiInfo.LIST_DOCS,
                 payload,
                 new TypeReference<ListDocsResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
-    public BaseResponse updateDocMeta(String docId, java.util.List<MetaItem> meta) throws ApiClientException, KnowledgeApiException {
+    public ListDocsV2Response listDocsV2(ListDocsV2Request request) throws ApiClientException, KnowledgeApiException {
+        return listDocsV2(request, null);
+    }
+
+    public ListDocsV2Response listDocsV2(ListDocsV2Request request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
+        Map<String, Object> payload = mergePayload(request);
+        return new ApiRequestBinding<>(
+                ApiInfo.LIST_DOCS_V2,
+                payload,
+                new TypeReference<ListDocsV2Response>() {
+                }).callApi(apiClient, addition);
+    }
+
+    public SearchDocsByFilterResponse searchDocsByFilter(SearchDocsByFilterRequest request)
+            throws ApiClientException, KnowledgeApiException {
+        return searchDocsByFilter(request, null);
+    }
+
+    public SearchDocsByFilterResponse searchDocsByFilter(SearchDocsByFilterRequest request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
+        Map<String, Object> payload = mergePayload(request);
+        return new ApiRequestBinding<>(
+                ApiInfo.SEARCH_DOCS_BY_FILTER,
+                payload,
+                new TypeReference<SearchDocsByFilterResponse>() {
+                }).callApi(apiClient, addition);
+    }
+
+    public BaseResponse updateDocMeta(String docId, java.util.List<MetaItem> meta)
+            throws ApiClientException, KnowledgeApiException {
         return updateDocMeta(docId, meta, null);
     }
 
-    public BaseResponse updateDocMeta(String docId, java.util.List<MetaItem> meta, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public BaseResponse updateDocMeta(String docId, java.util.List<MetaItem> meta, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = metaPayload();
         payload.put("doc_id", docId);
         payload.put("meta", meta);
@@ -153,15 +185,15 @@ public class KnowledgeCollectionClient {
                 ApiInfo.UPDATE_DOC_META,
                 payload,
                 new TypeReference<BaseResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
     public BaseResponse updateDoc(String docId, String docName) throws ApiClientException, KnowledgeApiException {
         return updateDoc(docId, docName, null);
     }
 
-    public BaseResponse updateDoc(String docId, String docName, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public BaseResponse updateDoc(String docId, String docName, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = metaPayload();
         payload.put("doc_id", docId);
         payload.put("doc_name", docName);
@@ -169,15 +201,15 @@ public class KnowledgeCollectionClient {
                 ApiInfo.UPDATE_DOC,
                 payload,
                 new TypeReference<BaseResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
     public PointInfo getPoint(String pointId) throws ApiClientException, KnowledgeApiException {
         return getPoint(pointId, false, null);
     }
 
-    public PointInfo getPoint(String pointId, boolean getAttachmentLink, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public PointInfo getPoint(String pointId, boolean getAttachmentLink, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = metaPayload();
         payload.put("point_id", pointId);
         if (getAttachmentLink) {
@@ -187,8 +219,7 @@ public class KnowledgeCollectionClient {
                 ApiInfo.GET_POINT,
                 payload,
                 new TypeReference<PointInfoResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
         PointInfo data = response.getData();
         if (data == null) {
             return null;
@@ -206,35 +237,37 @@ public class KnowledgeCollectionClient {
         return listPoints(request, null);
     }
 
-    public ListPointsResponse listPoints(ListPointsRequest request, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public ListPointsResponse listPoints(ListPointsRequest request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = mergePayload(request);
         return new ApiRequestBinding<>(
                 ApiInfo.LIST_POINTS,
                 payload,
                 new TypeReference<ListPointsResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
     public PointAddResponse addPoint(AddPointRequest request) throws ApiClientException, KnowledgeApiException {
         return addPoint(request, null);
     }
 
-    public PointAddResponse addPoint(AddPointRequest request, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public PointAddResponse addPoint(AddPointRequest request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = mergePayload(request);
         return new ApiRequestBinding<>(
                 ApiInfo.ADD_POINT,
                 payload,
                 new TypeReference<PointAddResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
-    public BaseResponse updatePoint(String pointId, UpdatePointRequest update) throws ApiClientException, KnowledgeApiException {
+    public BaseResponse updatePoint(String pointId, UpdatePointRequest update)
+            throws ApiClientException, KnowledgeApiException {
         return updatePoint(pointId, update, null);
     }
 
-    public BaseResponse updatePoint(String pointId, UpdatePointRequest update, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public BaseResponse updatePoint(String pointId, UpdatePointRequest update, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = metaPayload();
         payload.put("point_id", pointId);
         if (update != null) {
@@ -249,15 +282,15 @@ public class KnowledgeCollectionClient {
                 ApiInfo.UPDATE_POINT,
                 payload,
                 new TypeReference<BaseResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
     public BaseResponse deletePoint(DeletePointRequest request) throws ApiClientException, KnowledgeApiException {
         return deletePoint(request, null);
     }
 
-    public BaseResponse deletePoint(DeletePointRequest request, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public BaseResponse deletePoint(DeletePointRequest request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = metaPayload();
         if (request != null) {
             payload.put("point_id", request.getPointId());
@@ -266,15 +299,16 @@ public class KnowledgeCollectionClient {
                 ApiInfo.DELETE_POINT,
                 payload,
                 new TypeReference<BaseResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
-    public SearchResponse searchCollection(SearchCollectionRequest request) throws ApiClientException, KnowledgeApiException {
+    public SearchResponse searchCollection(SearchCollectionRequest request)
+            throws ApiClientException, KnowledgeApiException {
         return searchCollection(request, null);
     }
 
-    public SearchResponse searchCollection(SearchCollectionRequest request, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public SearchResponse searchCollection(SearchCollectionRequest request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = mergePayload(request);
         if (meta != null && !Util.isEmpty(meta.getCollectionName())) {
             payload.put("name", meta.getCollectionName());
@@ -283,15 +317,16 @@ public class KnowledgeCollectionClient {
                 ApiInfo.SEARCH_COLLECTION,
                 payload,
                 new TypeReference<SearchResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 
-    public SearchKnowledgeResponse searchKnowledge(SearchKnowledgeRequest request) throws ApiClientException, KnowledgeApiException {
+    public SearchKnowledgeResponse searchKnowledge(SearchKnowledgeRequest request)
+            throws ApiClientException, KnowledgeApiException {
         return searchKnowledge(request, null);
     }
 
-    public SearchKnowledgeResponse searchKnowledge(SearchKnowledgeRequest request, RequestAddition addition) throws ApiClientException, KnowledgeApiException {
+    public SearchKnowledgeResponse searchKnowledge(SearchKnowledgeRequest request, RequestAddition addition)
+            throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = mergePayload(request);
         if (meta != null && !Util.isEmpty(meta.getCollectionName())) {
             payload.put("name", meta.getCollectionName());
@@ -300,8 +335,6 @@ public class KnowledgeCollectionClient {
                 ApiInfo.SEARCH_KNOWLEDGE,
                 payload,
                 new TypeReference<SearchKnowledgeResponse>() {
-                }
-        ).callApi(apiClient, addition);
+                }).callApi(apiClient, addition);
     }
 }
-

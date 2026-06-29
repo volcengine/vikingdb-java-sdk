@@ -130,3 +130,8 @@ We welcome contributions! Please follow standard practices like creating pull re
 ## 8. License
 
 This SDK is licensed under the Apache 2.0 License.
+
+## 9. Security and privacy
+
+This project takes security seriously.
+For vulnerability reporting and supported versions, see [SECURITY.md](SECURITY.md).

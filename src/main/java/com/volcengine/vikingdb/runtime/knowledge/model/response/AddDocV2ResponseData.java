@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @Data
-public class AddDocResponseData {
+public class AddDocV2ResponseData {
     @JsonProperty("collection_name")
     private String collectionName;
 
@@ -25,7 +25,4 @@ public class AddDocResponseData {
 
     @JsonProperty("doc_id")
     private String docId;
-
-    @JsonProperty("dedup_info")
-    private DedupInfo dedupInfo;
 }

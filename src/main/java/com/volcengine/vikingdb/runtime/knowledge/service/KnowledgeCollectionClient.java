@@ -70,17 +70,17 @@ public class KnowledgeCollectionClient {
                 }).callApi(apiClient, addition);
     }
 
-    public AddDocResponse addDocV2(AddDocV2Request request) throws ApiClientException, KnowledgeApiException {
+    public AddDocV2Response addDocV2(AddDocV2Request request) throws ApiClientException, KnowledgeApiException {
         return addDocV2(request, null);
     }
 
-    public AddDocResponse addDocV2(AddDocV2Request request, RequestAddition addition)
+    public AddDocV2Response addDocV2(AddDocV2Request request, RequestAddition addition)
             throws ApiClientException, KnowledgeApiException {
         Map<String, Object> payload = mergePayload(request);
         return new ApiRequestBinding<>(
                 ApiInfo.ADD_DOC_V2,
                 payload,
-                new TypeReference<AddDocResponse>() {
+                new TypeReference<AddDocV2Response>() {
                 }).callApi(apiClient, addition);
     }
 

@@ -5,7 +5,7 @@ import com.volcengine.vikingdb.runtime.core.auth.Auth;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.AddDocV2Request;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.ChatMessage;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.ServiceChatRequest;
-import com.volcengine.vikingdb.runtime.knowledge.model.response.AddDocResponse;
+import com.volcengine.vikingdb.runtime.knowledge.model.response.AddDocV2Response;
 import com.volcengine.vikingdb.runtime.knowledge.model.response.ServiceChatResponse;
 import com.volcengine.vikingdb.runtime.knowledge.service.KnowledgeCollectionClient;
 import com.volcengine.vikingdb.runtime.knowledge.service.KnowledgeService;
@@ -31,7 +31,7 @@ public class Main {
                 .docName(ExampleUtil.envOrDefault("VIKING_DOC_NAME", "your-file-name.pdf"))
                 .uri(uri)
                 .build();
-        AddDocResponse addResp = kc.addDocV2(addReq, new RequestAddition());
+        AddDocV2Response addResp = kc.addDocV2(addReq, new RequestAddition());
         ExampleUtil.printJson("overall_add_doc_v2", addResp);
 
         ServiceChatRequest serviceChatReq = ServiceChatRequest.builder()

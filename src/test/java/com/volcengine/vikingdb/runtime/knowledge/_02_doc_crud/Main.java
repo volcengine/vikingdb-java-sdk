@@ -7,7 +7,7 @@ import com.volcengine.vikingdb.runtime.knowledge.model.request.ListDocsRequest;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.ListDocsV2Request;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.SearchDocsByFilterRequest;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.MetaItem;
-import com.volcengine.vikingdb.runtime.knowledge.model.response.AddDocResponse;
+import com.volcengine.vikingdb.runtime.knowledge.model.response.AddDocV2Response;
 import com.volcengine.vikingdb.runtime.knowledge.model.response.BaseResponse;
 import com.volcengine.vikingdb.runtime.knowledge.model.response.DocInfo;
 import com.volcengine.vikingdb.runtime.knowledge.model.response.ListDocsResponse;
@@ -46,7 +46,7 @@ public class Main {
                 .uri(uri)
                 .tagList(tags)
                 .build();
-        AddDocResponse addResp = kc.addDocV2(addReq, new RequestAddition());
+        AddDocV2Response addResp = kc.addDocV2(addReq, new RequestAddition());
         ExampleUtil.printJson("add_doc_v2", addResp);
 
         DocInfo docInfo = kc.getDoc(docId, true, new RequestAddition());

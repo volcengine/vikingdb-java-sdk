@@ -10,20 +10,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
 @Data
-public class ServiceChatRequest {
-    @JsonProperty("service_resource_id")
-    private String serviceResourceId;
+public class QueryParam {
+    @JsonProperty("doc_filter")
+    private Object docFilter;
 
-    @JsonProperty("messages")
-    private List<ChatMessage> messages;
-
-    @JsonProperty("query_param")
-    private QueryParam queryParam;
-
-    @JsonProperty("stream")
-    private Boolean stream;
+    @JsonProperty("include_path_list")
+    private List<String> includePathList;
 }

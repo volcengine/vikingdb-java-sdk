@@ -29,7 +29,7 @@ public class SearchKnowledgeRequest {
     private Map<String, Object> postProcessing;
 
     @JsonProperty("query_param")
-    private Map<String, Object> queryParam;
+    private QueryParam queryParam;
 
     @JsonProperty("limit")
     private Integer limit;
@@ -37,4 +37,3 @@ public class SearchKnowledgeRequest {
     @JsonProperty("dense_weight")
     private Double denseWeight;
 }
-

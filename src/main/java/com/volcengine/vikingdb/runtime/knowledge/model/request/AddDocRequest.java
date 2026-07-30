@@ -45,4 +45,10 @@ public class AddDocRequest {
 
     @JsonProperty("dedup")
     private DedupOptions dedup;
+
+    @JsonProperty("path_prefix")
+    private List<String> pathPrefix;
+
+    @JsonProperty("strategy_resource_id")
+    private String strategyResourceId;
 }

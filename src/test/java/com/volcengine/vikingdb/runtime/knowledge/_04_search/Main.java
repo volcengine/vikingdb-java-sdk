@@ -3,6 +3,7 @@ package com.volcengine.vikingdb.runtime.knowledge._04_search;
 import com.volcengine.vikingdb.runtime.core.RequestAddition;
 import com.volcengine.vikingdb.runtime.core.auth.Auth;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.ChatMessage;
+import com.volcengine.vikingdb.runtime.knowledge.model.request.QueryParam;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.RerankDataItem;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.RerankRequest;
 import com.volcengine.vikingdb.runtime.knowledge.model.request.SearchCollectionRequest;
@@ -20,6 +21,7 @@ import com.volcengine.vikingdb.runtime.knowledge.util.ExampleUtil;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -41,6 +43,16 @@ public class Main {
 
         SearchKnowledgeRequest skReq = SearchKnowledgeRequest.builder()
                 .query("2025 Q1 revenue growth")
+                .queryParam(QueryParam.builder()
+                        .docFilter(new HashMap<String, Object>() {
+                            {
+                                put("op", "must");
+                                put("field", "quarter");
+                                put("conds", Collections.singletonList("Q3"));
+                            }
+                        })
+                        .includePathList(null)
+                        .build())
                 .limit(10)
                 .denseWeight(0.5)
                 .build();

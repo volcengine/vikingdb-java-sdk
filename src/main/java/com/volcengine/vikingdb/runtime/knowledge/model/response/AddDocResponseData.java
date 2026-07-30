@@ -26,13 +26,9 @@ public class AddDocResponseData {
     @JsonProperty("doc_id")
     private String docId;
 
-    @JsonProperty("task_id")
-    private Long taskId;
-
     @JsonProperty("dedup_info")
     private DedupInfo dedupInfo;
 
     @JsonProperty("more_info")
     private String moreInfo;
 }
-

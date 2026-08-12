@@ -28,6 +28,9 @@ public class SearchByKeywordsRequest extends BaseSearchRequest {
     @JsonProperty("query")
     private String query;
 
+    @JsonProperty("highlight")
+    private Highlight highlight;
+
     @JsonProperty("case_sensitive")
     private Boolean caseSensitive;
 

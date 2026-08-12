@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.util.List;
 import java.util.Map;
 
 @NoArgsConstructor
@@ -28,8 +29,24 @@ public class AggregateRequest extends BaseIndexRequest {
     @JsonProperty("partition")
     private String partition;
 
+    /**
+     * @deprecated use {@link #groupBy} instead.
+     */
+    @Deprecated
     @JsonProperty("field")
     private String field;
+
+    @JsonProperty("group_by")
+    private String groupBy;
+
+    @JsonProperty("calc_value_on")
+    private String calcValueOn;
+
+    @JsonProperty("ids")
+    private List<Object> ids;
+
+    @JsonProperty("weights")
+    private List<Double> weights;
 
     @JsonProperty("cond")
     private Map<String, Object> cond;

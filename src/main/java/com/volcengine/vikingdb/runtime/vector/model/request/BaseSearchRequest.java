@@ -46,6 +46,9 @@ public class BaseSearchRequest extends BaseIndexRequest {
     @JsonProperty("return_detail_info")
     private Boolean returnDetailInfo;
 
+    @JsonProperty("ignore_unknown_fields")
+    private Boolean ignoreUnknownFields;
+
     @JsonProperty("advance")
     private SearchAdvance advance;
 }

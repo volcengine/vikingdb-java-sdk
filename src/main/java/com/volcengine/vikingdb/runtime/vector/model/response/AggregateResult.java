@@ -20,6 +20,19 @@ public class AggregateResult {
     @JsonProperty("op")
     private String op;
 
+    /**
+     * @deprecated use {@link #groupBy} instead.
+     */
+    @Deprecated
     @JsonProperty("field")
     private String field;
+
+    @JsonProperty("group_by")
+    private String groupBy;
+
+    @JsonProperty("calc_value_on")
+    private String calcValueOn;
+
+    @JsonProperty("vector_weighted_sum")
+    private VectorWeightedSumResult vectorWeightedSum;
 }

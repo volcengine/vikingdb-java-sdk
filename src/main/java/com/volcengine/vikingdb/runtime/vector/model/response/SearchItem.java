@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Map;
 
 @NoArgsConstructor
@@ -31,4 +32,7 @@ public class SearchItem {
 
     @JsonProperty("addition_score")
     private Float additionScore;
+
+    @JsonProperty("highlight")
+    private Map<String, Map<String, List<Integer>>> highlight;
 }

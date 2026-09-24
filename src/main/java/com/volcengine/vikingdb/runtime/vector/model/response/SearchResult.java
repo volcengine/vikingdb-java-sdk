@@ -33,6 +33,9 @@ public class SearchResult {
     @JsonProperty("real_text_query")
     private String realTextQuery;
 
+    @JsonProperty("effective_keywords")
+    private Map<String, List<String>> effectiveKeywords;
+
     @JsonProperty("token_usage")
     private Object tokenUsage;
 

@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.util.List;
+import java.util.Map;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,6 +37,9 @@ public class SearchByKeywordsRequest extends BaseSearchRequest {
 
     @JsonProperty("fields")
     private List<String> fields;
+
+    @JsonProperty("fields_weights")
+    private Map<String, Float> fieldsWeights;
 
     @JsonProperty("bm25_k1")
     private Double bm25K1;

@@ -16,7 +16,15 @@ import java.util.List;
 @Builder(toBuilder = true)
 @Data
 public class ListPointsResult {
+    @JsonProperty("collection_name")
+    private String collectionName;
+
+    @JsonProperty("count")
+    private Integer count;
+
+    @JsonProperty("total_num")
+    private Integer totalNum;
+
     @JsonProperty("point_list")
     private List<PointInfo> pointList;
 }
-

@@ -3,7 +3,6 @@
 
 package com.volcengine.vikingdb.runtime.knowledge.model.response;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -12,10 +11,4 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class ListPointsResponse extends DataResponse<ListPointsResult> {
-    @JsonProperty("count")
-    private Integer count;
-
-    @JsonProperty("total_num")
-    private Integer totalNum;
 }
-

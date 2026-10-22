@@ -69,10 +69,11 @@ public class Main {
         ListPointsRequest listReq = ListPointsRequest.builder().offset(0).limit(10).getAttachmentLink(true).build();
         ListPointsResponse listResp = kc.listPoints(listReq, new RequestAddition());
         ExampleUtil.printJson("list_points", listResp);
+        ExampleUtil.printJson("totalCount", listResp.getData() != null ? listResp.getData().getTotalNum() : null);
+        ExampleUtil.printJson("count", listResp.getData() != null ? listResp.getData().getCount() : null);
 
         BaseResponse deletePointResp = kc.deletePoint(DeletePointRequest.builder().pointId(pointId).build(),
                 new RequestAddition());
         ExampleUtil.printJson("delete_point", deletePointResp);
     }
 }
-

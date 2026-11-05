@@ -30,6 +30,13 @@ public class Sign {
     public static SignableRequest prepareRequest(Scheme scheme, String host, String path, Method method,
                                                  Map<String, String> params, Map<String, String> headers,
                                                  String body, String ak, String sk, String region, String serviceName) throws Exception {
+        return prepareRequest(scheme, host, path, method, params, headers, body, ak, sk, region, serviceName, null);
+    }
+
+    public static SignableRequest prepareRequest(Scheme scheme, String host, String path, Method method,
+                                                 Map<String, String> params, Map<String, String> headers,
+                                                 String body, String ak, String sk, String region, String serviceName,
+                                                 String sessionToken) throws Exception {
         SignableRequest request = new SignableRequest();
         request.setMethod(method.name());
         RequestExecutor.setHeaders(request, headers);
@@ -61,6 +68,7 @@ public class Sign {
                 serviceName);
         credentials.setAccessKeyID(ak);
         credentials.setSecretAccessKey(sk);
+        credentials.setSessionToken(sessionToken);
 
         ISignerV4 ISigner = new SignerV4Impl();
         ISigner.sign(request, credentials);

@@ -19,11 +19,17 @@ public class RequestExecutorWithAkSk implements RequestExecutor {
     private final ApiClient apiClient;
     private final String ak;
     private final String sk;
+    private final String sessionToken;
 
     public RequestExecutorWithAkSk(ApiClient apiClient, String ak, String sk) {
+        this(apiClient, ak, sk, null);
+    }
+
+    public RequestExecutorWithAkSk(ApiClient apiClient, String ak, String sk, String sessionToken) {
         this.apiClient = apiClient;
         this.ak = ak;
         this.sk = sk;
+        this.sessionToken = sessionToken;
     }
 
     @Override
@@ -34,7 +40,7 @@ public class RequestExecutorWithAkSk implements RequestExecutor {
         try {
             signableRequest = Sign.prepareRequest(
                     apiClient.getScheme(), apiClient.getHost(), path, method,
-                    params, headers, body, ak, sk, apiClient.getRegion(), apiClient.getServiceName()
+                    params, headers, body, ak, sk, apiClient.getRegion(), apiClient.getServiceName(), sessionToken
             );
         } catch (Exception e) {
             throw new SignRequestException(e.getMessage(), e);

@@ -184,7 +184,8 @@ public class KnowledgeService {
                         akSk.getAk(),
                         akSk.getSk(),
                         apiClient.getRegion(),
-                        apiClient.getServiceName());
+                        apiClient.getServiceName(),
+                        akSk.getSessionToken());
             } catch (Exception e) {
                 throw new SignRequestException(e.getMessage(), e);
             }

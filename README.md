@@ -47,6 +47,7 @@ public class QuickStartExample {
     public static void main(String[] args) {
         // 1. Initialize the service
         Auth auth = new AuthWithAkSk("YOUR_AK", "YOUR_SK");
+        // For temporary credentials, use new AuthWithAkSk("YOUR_AK", "YOUR_SK", "YOUR_SESSION_TOKEN").
         VectorService service = new VectorService("your-vikingdb-host", auth);
 
         // 2. Create a collection (This is an example, actual collection creation is done via other APIs)

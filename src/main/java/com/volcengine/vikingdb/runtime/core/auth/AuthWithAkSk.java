@@ -14,10 +14,16 @@ import lombok.ToString;
 public class AuthWithAkSk implements Auth {
     private final String ak;
     private final String sk;
+    private final String sessionToken;
 
     public AuthWithAkSk(String ak, String sk) {
+        this(ak, sk, null);
+    }
+
+    public AuthWithAkSk(String ak, String sk, String sessionToken) {
         this.ak = ak;
         this.sk = sk;
+        this.sessionToken = sessionToken;
     }
 
     @Override

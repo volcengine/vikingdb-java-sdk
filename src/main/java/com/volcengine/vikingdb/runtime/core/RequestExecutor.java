@@ -31,7 +31,7 @@ public interface RequestExecutor {
         if (auth != null) {
             if (auth.getAuthType() == AuthType.AK_SK) {
                 AuthWithAkSk authWithAkSk = (AuthWithAkSk) auth;
-                return new RequestExecutorWithAkSk(apiClient, authWithAkSk.getAk(), authWithAkSk.getSk());
+                return new RequestExecutorWithAkSk(apiClient, authWithAkSk.getAk(), authWithAkSk.getSk(), authWithAkSk.getSessionToken());
             }
             if (auth.getAuthType() == AuthType.API_KEY) {
                 AuthWithApiKey authWithApiKey = (AuthWithApiKey) auth;
